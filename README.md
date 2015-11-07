@@ -52,7 +52,7 @@ public class MyResource {
 
     @GET
     public Response ok(@Context Request request) {
-        return Response.ok("ok ).build();
+        return Response.ok("ok").build();
     }
 }
 ```
@@ -76,7 +76,7 @@ public class MyResource {
 ```
 
 
-There's a bit more said about this limitation in the [background](#Background) section.
+There's a bit more said about this limitation in the [background](#background) section.
 
  
 ### Automatic class configuration
