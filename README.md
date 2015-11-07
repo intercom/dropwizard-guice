@@ -13,6 +13,10 @@ public class MyApp extends GuiceApplication<MyAppConfiguration> {
         new MyApp().run(args);
     }
 
+    public MyApp(String... packages) {
+        super(packages);
+    }
+
     @Override
     protected List<Module> addModules(MyAppConfiguration configuration) {
         return Lists.newArrayList(new MyAppModule());
