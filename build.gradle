@@ -1,0 +1,50 @@
+buildscript {
+  repositories {
+    jcenter()
+    mavenCentral()
+  }
+}
+
+plugins {
+  id 'eclipse'
+  id 'idea'
+  id 'java'
+  id 'maven'
+  id 'maven-publish'
+  id 'nebula.nebula-bintray' version '3.1.0'
+  id 'nebula.maven-publish' version '4.4.1'
+  id 'nebula.source-jar' version '4.4.1'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+  mavenCentral()
+  jcenter()
+}
+
+def versions = [
+  dropwizard : "0.8.3",
+  guice: "4.0",
+  junit: "4.11",
+  reflections: "0.9.10",
+  squarespace_jersey2: "0.10"
+]
+
+
+dependencies {
+  compile "com.google.inject:guice:$versions.guice"
+  compile "com.google.inject.extensions:guice-assistedinject:$versions.guice"
+  compile "com.google.inject.extensions:guice-multibindings:$versions.guice"
+  compile "com.google.inject.extensions:guice-servlet:$versions.guice"
+  compile "com.squarespace.jersey2-guice:jersey2-guice:$versions.squarespace_jersey2"
+  compile "io.dropwizard:dropwizard-auth:$versions.dropwizard"
+  compile "io.dropwizard:dropwizard-core:$versions.dropwizard"
+  compile "io.dropwizard:dropwizard-testing:$versions.dropwizard"
+  compile "org.reflections:reflections:$versions.reflections"
+  testCompile "junit:junit:$versions.junit"
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.8'
+}
