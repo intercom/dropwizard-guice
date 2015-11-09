@@ -17,7 +17,7 @@ public class TheNoAutoApplication extends GuiceApplication<TheApplicationConfigu
     }
 
     @Override
-    protected List<Module> addModules(TheApplicationConfiguration configuration) {
+    protected List<Module> addModules(TheApplicationConfiguration configuration, Environment environment) {
         return Lists.newArrayList(
             new TheModule(configuration),
             new NamedMapBinderModule(configuration.namedStrings)

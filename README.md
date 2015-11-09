@@ -18,7 +18,7 @@ public class MyApp extends GuiceApplication<MyAppConfiguration> {
     }
 
     @Override
-    protected List<Module> addModules(MyAppConfiguration configuration) {
+    protected List<Module> addModules(MyAppConfiguration configuration, Environment environment) {
         return Lists.newArrayList(new MyAppModule());
     }
 }
@@ -39,7 +39,7 @@ public class MyApp extends GuiceApplication<MyAppConfiguration> {
   
 ```java
     @Override
-    protected List<Module> addModules(MyConfiguration configuration) {
+    protected List<Module> addModules(MyConfiguration configuration, Environment environment) {
         return Lists.newArrayList(new MyModule(configuration));
     }
 ``` 
@@ -149,7 +149,7 @@ Then the map can be be suppled to `NamedMapBinderModule` -
 
 ```java
     @Override
-    protected List<Module> addModules(MyConfiguration configuration) {
+    protected List<Module> addModules(MyConfiguration configuration, Environment environment) {
         return Lists.newArrayList( 
             new NamedMapBinderModule(configuration.getNamedStrings())
         );
@@ -187,7 +187,7 @@ Then the file can be configured by prefixing it with `classpath:` -
 
 ```java
 @Override
-protected List<Module> addModules(MyConfiguration configuration) {
+protected List<Module> addModules(MyConfiguration configuration, Environment environment) {
     return Lists.newArrayList( 
         new NamedJsonBinderModule("classpath:conf/configuration.json")
     );
@@ -214,7 +214,7 @@ You can also supply absolute file paths to `NamedJsonBinderModule` -
 
 ```java
 @Override
-protected List<Module> addModules(MyConfiguration configuration) {
+protected List<Module> addModules(MyConfiguration configuration, Environment environment) {
     return Lists.newArrayList( 
         new NamedJsonBinderModule("/etc/my-service/conf/configuration.json")
     );

@@ -5,6 +5,7 @@ import com.google.inject.Module;
 
 import java.util.List;
 
+import io.dropwizard.setup.Environment;
 import io.intercom.dropwizard.app.TheApplicationConfiguration;
 import io.intercom.dropwizard.guice.GuiceApplication;
 
@@ -16,7 +17,7 @@ public class Jersey2Application extends GuiceApplication<TheApplicationConfigura
     }
 
     @Override
-    protected List<Module> addModules(TheApplicationConfiguration configuration) {
+    protected List<Module> addModules(TheApplicationConfiguration configuration, Environment environment) {
         return Lists.newArrayList(
             new Jersey2Module()
         );

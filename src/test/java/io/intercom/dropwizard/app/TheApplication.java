@@ -5,6 +5,7 @@ import com.google.inject.Module;
 
 import java.util.List;
 
+import io.dropwizard.setup.Environment;
 import io.intercom.dropwizard.guice.GuiceApplication;
 import io.intercom.dropwizard.module.NamedMapBinderModule;
 
@@ -16,7 +17,7 @@ public class TheApplication extends GuiceApplication<TheApplicationConfiguration
     }
 
     @Override
-    protected List<Module> addModules(TheApplicationConfiguration configuration) {
+    protected List<Module> addModules(TheApplicationConfiguration configuration, Environment environment) {
         return Lists.newArrayList(
             new TheModule(configuration),
             new NamedMapBinderModule(configuration.namedStrings)

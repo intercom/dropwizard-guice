@@ -113,7 +113,7 @@ abstract public class GuiceApplication<T extends Configuration> extends Applicat
      * @param configuration the app configuration
      * @return a list of modules to be provisioned by Guice
      */
-    abstract protected List<Module> addModules(T configuration);
+    abstract protected List<Module> addModules(T configuration, Environment environment);
 
     /**
      * Access the Dropwizard {@link Environment} and/or the Guice {@link Injector} when the
@@ -135,7 +135,7 @@ abstract public class GuiceApplication<T extends Configuration> extends Applicat
     private Injector configureGuice(T configuration, Environment environment) throws Exception {
         appModules.add(new JerseyModule());
         appModules.add(new MetricRegistryModule(environment.metrics()));
-        appModules.addAll(addModules(configuration));
+        appModules.addAll(addModules(configuration, environment));
         Injector injector = Guice.createInjector(ImmutableList.copyOf(this.appModules));
         injector.injectMembers(this);
         registerWithInjector(configuration, environment, injector);
